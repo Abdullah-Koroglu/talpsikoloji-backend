@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_tracks_tracks",
+  "info": {
+    "displayName": "tracks",
+    "icon": "music",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "track": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::track.track"
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}
