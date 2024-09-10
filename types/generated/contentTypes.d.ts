@@ -362,45 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiCompletionCompletion extends Schema.CollectionType {
-  collectionName: 'completions';
-  info: {
-    singularName: 'completion';
-    pluralName: 'completions';
-    displayName: 'Completion';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    track: Attribute.Relation<
-      'api::completion.completion',
-      'oneToOne',
-      'api::track.track'
-    >;
-    users_permissions_user: Attribute.Relation<
-      'api::completion.completion',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::completion.completion',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::completion.completion',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiTrackTrack extends Schema.CollectionType {
   collectionName: 'tracks';
   info: {
@@ -875,7 +836,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::completion.completion': ApiCompletionCompletion;
       'api::track.track': ApiTrackTrack;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
