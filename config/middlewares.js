@@ -1,16 +1,31 @@
-module.exports = [
-  'strapi::logger',
+module.exports = ({ env }) => [
   'strapi::errors',
-  'strapi::security',
+  {
+    name: 'strapi::security',
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          'connect-src': ["'self'", 'http:', 'https:', 'ws:'],
+          'img-src': ["'self'", 'data:', 'blob:', 'https://*.s3.amazonaws.com'],
+          'media-src': ["'self'", 'data:', 'blob:', 'https://*.s3.amazonaws.com'],
+          upgradeInsecureRequests: null,
+        },
+      },
+    },
+  },
+  'strapi::cors',
   {
     name: 'strapi::cors',
     config: {
-      enabled: true, // deprecated in v4.25.8
+      enabled: true,
+      origin: ['http://185.250.210.56:3000'], // Allow your frontend's origin
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
       headers: '*',
-      origin: ['*']
-    }
+    },
   },
   'strapi::poweredBy',
+  'strapi::logger',
   'strapi::query',
   'strapi::body',
   'strapi::session',
