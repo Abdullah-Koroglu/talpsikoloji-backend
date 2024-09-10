@@ -5,8 +5,10 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['http://185.250.210.56:3000'],
-    },
+      enabled: true, // deprecated in v4.25.8
+      headers: '*',
+      origin: ['*']
+    }
   },
   'strapi::poweredBy',
   'strapi::query',
