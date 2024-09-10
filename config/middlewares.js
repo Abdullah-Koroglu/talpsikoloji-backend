@@ -19,7 +19,7 @@ module.exports = ({ env }) => [
     name: 'strapi::cors',
     config: {
       enabled: true,
-      origin: ['http://185.250.210.56:3000'], // Allow your frontend's origin
+      origin: ['https://talpsikoloji.com'], // Allow your frontend's origin
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
       headers: '*',
     },
