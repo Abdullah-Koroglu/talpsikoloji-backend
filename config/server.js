@@ -7,4 +7,8 @@ module.exports = ({ env }) => ({
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
+  bootstrap({ strapi }) {
+    // Set the requestTimeout to 1,800,000 milliseconds (30 minutes):
+    strapi.server.httpServer.requestTimeout = 30 * 60 * 1000;
+  },
 });
