@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "base_lists",
+  "info": {
+    "singularName": "base-list",
+    "pluralName": "base-lists",
+    "displayName": "BaseList"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Tracks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "tracks.tracks"
+    }
+  }
+}

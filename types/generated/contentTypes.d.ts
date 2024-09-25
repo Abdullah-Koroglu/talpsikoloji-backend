@@ -362,6 +362,59 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiBaseListBaseList extends Schema.SingleType {
+  collectionName: 'base_lists';
+  info: {
+    singularName: 'base-list';
+    pluralName: 'base-lists';
+    displayName: 'BaseList';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Tracks: Attribute.Component<'tracks.tracks', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::base-list.base-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::base-list.base-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiListList extends Schema.CollectionType {
+  collectionName: 'lists';
+  info: {
+    singularName: 'list';
+    pluralName: 'lists';
+    displayName: 'List';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    Tracks: Attribute.Component<'tracks.tracks', true> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::list.list', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::list.list', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTrackTrack extends Schema.CollectionType {
   collectionName: 'tracks';
   info: {
@@ -836,6 +889,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::base-list.base-list': ApiBaseListBaseList;
+      'api::list.list': ApiListList;
       'api::track.track': ApiTrackTrack;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
